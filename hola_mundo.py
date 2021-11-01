@@ -1,3 +1,3 @@
-numbers = "HOLA MUNDO"
+mundo  = hola mundo
 
-print(numbers)
+print(mundo)
