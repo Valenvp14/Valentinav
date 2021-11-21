@@ -36,6 +36,7 @@ class Automovil(Vehiculo):  # herencia simple: Automovil extiende a Vehiculo
 
 class moto(Vehiculo):
     __rueda = 0
+    __gasolina = 0
 
     def prender(self):
       print("Ready")
@@ -43,11 +44,28 @@ class moto(Vehiculo):
     def arrancarmoto(self):
         print("no tengo ruedas para llevarte en este", self.marca)
 
+    def echarGasolina(self, vGalones):  # Encapsulamiento - esto es un setter
+            if vGalones <= 1:
+                print("con un solo galon de gasolina no llegaras a nungun lado")
+            else:
+                if vGalones>=0 and vGalones<=7:
+                   print("necesitas echar gasolina para seguir")
+                   self.__galonesGasolina = vGalones
+                else:
+                    print("no puedes echar mas de 7 galones de gasolina")
+
+
+    def cuantaGasolinaHay(self):  # Encapsulamiento - esto es un getter
+            print("Ud. tiene:", self.__galonesGasolina, "galones de Gasolina")
+
     def comprarrueda(self, rueda):
         if rueda <= 1:
             print("con tres ruedas no puedes moverte")
         else:
-            self.__rueda = rueda
+            if rueda>=0 and rueda<=5:
+                print("necesitas ruedas para seguir andando")
+                self.__rueda = rueda
+
 
     def cuantasruedasnecesito(self):
         print("usted necesita", self.__rueda, "ruedas para la moto")
@@ -62,9 +80,11 @@ miCarro.cuantaGasolinaHay()
 miCarro.echarGasolina(100)
 miCarro.cuantaGasolinaHay()
 
-mimoto = moto("CFMOTO", "BMW", "2021")
+mimoto = moto("YAMAHA", "KODIAK700", "2021")
 mimoto.prender()
 mimoto.arrancarmoto()
+mimoto.echarGasolina(6)
+mimoto.cuantaGasolinaHay()
 mimoto.cuantasruedasnecesito()
 mimoto.comprarrueda(4)
 mimoto.cuantasruedasnecesito()
